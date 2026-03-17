@@ -1,65 +1,262 @@
-import Image from "next/image";
+import { ArrowRight, ChartLine, Clock3, ShieldCheck, Sparkles, Zap } from "lucide-react"
+
+import { Badge } from "@/components/ui/badge"
+import { buttonVariants } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
+
+const features = [
+  {
+    title: "AI-powered campaign writing",
+    description:
+      "Generate polished launch copy, social captions, and ad variants in seconds.",
+    icon: Sparkles,
+  },
+  {
+    title: "Realtime analytics",
+    description:
+      "See what channels convert best and automatically rebalance your spend.",
+    icon: ChartLine,
+  },
+  {
+    title: "Lightning fast setup",
+    description:
+      "Connect Stripe, HubSpot, and Google Analytics in minutes with prebuilt workflows.",
+    icon: Zap,
+  },
+  {
+    title: "Enterprise-grade security",
+    description:
+      "SOC 2 compliant infrastructure with role-based controls and audit logs.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Always-on automations",
+    description:
+      "Run welcome journeys, upsell emails, and churn prevention campaigns around the clock.",
+    icon: Clock3,
+  },
+  {
+    title: "Conversion-first templates",
+    description:
+      "Use proven landing page blocks designed from high-performing launches.",
+    icon: ArrowRight,
+  },
+]
+
+const stats = [
+  { label: "Monthly visitors converted", value: "1.2M+" },
+  { label: "Average lift in paid ROAS", value: "38%" },
+  { label: "Teams shipping every week", value: "2,500+" },
+]
+
+const testimonials = [
+  {
+    quote:
+      "We launched in two days and hit our quarterly sign-up goal in the first week.",
+    name: "Priya K.",
+    role: "Growth Lead, Nimbly",
+  },
+  {
+    quote:
+      "The automation flows paid for themselves immediately. The team uses it daily now.",
+    name: "Jordan M.",
+    role: "Head of Marketing, Helio",
+  },
+  {
+    quote:
+      "Beautiful templates, useful insights, and no engineering bottlenecks. Exactly what we needed.",
+    name: "Alex R.",
+    role: "Founder, Packetly",
+  },
+]
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-background">
+      <main className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
+        <header className="flex items-center justify-between py-6">
+          <p className="text-lg font-semibold tracking-tight">PulsePilot</p>
+          <a
+            href="#pricing"
+            className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+          >
+            View pricing
+          </a>
+        </header>
+
+        <section className="relative overflow-hidden rounded-3xl border bg-gradient-to-b from-muted/40 to-background px-6 py-16 md:px-12">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,oklch(0.95_0.06_260/.45),transparent_45%)]" />
+          <Badge variant="secondary" className="mb-5">
+            New: Lifecycle campaign copilot
+          </Badge>
+          <h1 className="max-w-3xl text-4xl leading-tight font-semibold tracking-tight md:text-6xl">
+            Launch high-converting campaigns in hours, not weeks
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
+            PulsePilot helps modern teams create landing pages, automate follow-ups,
+            and optimize conversions using one collaborative marketing workspace.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#start" className={cn(buttonVariants({ size: "lg" }))}>
+              Start free trial
+              <ArrowRight className="size-4" />
+            </a>
+            <a
+              href="#features"
+              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+            >
+              Explore features
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {stats.map((stat) => (
+              <Card key={stat.label} className="bg-card/70">
+                <CardHeader>
+                  <CardTitle className="text-3xl">{stat.value}</CardTitle>
+                  <CardDescription>{stat.label}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="features" className="pt-20">
+          <div className="mb-8">
+            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+              Everything your growth team needs
+            </h2>
+            <p className="mt-3 max-w-2xl text-muted-foreground">
+              Designed for fast-moving startups and marketing teams that care
+              about measurable pipeline impact.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
+              <Card key={feature.title}>
+                <CardHeader>
+                  <div className="mb-2 flex size-9 items-center justify-center rounded-lg bg-secondary text-secondary-foreground">
+                    <feature.icon className="size-4" />
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="pt-20">
+          <div className="mb-8">
+            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+              Trusted by product-led teams
+            </h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.name}>
+                <CardContent className="pt-1 text-base leading-relaxed">
+                  “{testimonial.quote}”
+                </CardContent>
+                <CardFooter className="flex-col items-start gap-0.5">
+                  <p className="font-medium">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="pricing" className="pt-20">
+          <div className="mb-8">
+            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+              Simple pricing built to scale
+            </h2>
+            <p className="mt-3 max-w-2xl text-muted-foreground">
+              Start for free, then upgrade when your campaign volume grows.
+            </p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <Badge variant="outline" className="w-fit">
+                  Starter
+                </Badge>
+                <CardTitle className="text-3xl">$0</CardTitle>
+                <CardDescription>
+                  Perfect for trying the platform with your first campaigns.
+                </CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <a href="#start" className={cn(buttonVariants({ className: "w-full" }))}>
+                  Get started
+                </a>
+              </CardFooter>
+            </Card>
+            <Card className="border-primary/30 bg-primary/5">
+              <CardHeader>
+                <Badge className="w-fit">Growth</Badge>
+                <CardTitle className="text-3xl">$49/mo</CardTitle>
+                <CardDescription>
+                  For teams that need advanced segmentation and automation.
+                </CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <a
+                  href="#start"
+                  className={cn(buttonVariants({ variant: "secondary", className: "w-full" }))}
+                >
+                  Start 14-day trial
+                </a>
+              </CardFooter>
+            </Card>
+          </div>
+        </section>
+
+        <section id="start" className="pt-20">
+          <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-primary/10 to-background">
+            <CardHeader>
+              <CardTitle className="text-3xl">Ready to ship your next launch?</CardTitle>
+              <CardDescription>
+                Join thousands of marketers using PulsePilot to move faster and
+                convert more visitors.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form className="flex flex-col gap-3 sm:flex-row">
+                <Input
+                  type="email"
+                  placeholder="Enter your work email"
+                  aria-label="Work email"
+                  className="h-10"
+                />
+                <button
+                  type="button"
+                  className={cn(
+                    buttonVariants({ size: "lg", className: "justify-center sm:min-w-44" })
+                  )}
+                >
+                  Request demo
+                </button>
+              </form>
+            </CardContent>
+          </Card>
+        </section>
+
+        <footer className="pt-14 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} PulsePilot. Built with Next.js, Tailwind CSS,
+          and shadcn/ui.
+        </footer>
       </main>
     </div>
-  );
+  )
 }

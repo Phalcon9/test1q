@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ArrowRight, ChartLine, Clock3, ShieldCheck, Sparkles, Zap } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -62,18 +63,21 @@ const testimonials = [
       "We launched in two days and hit our quarterly sign-up goal in the first week.",
     name: "Priya K.",
     role: "Growth Lead, Nimbly",
+    avatar: "/images/avatar-priya.jpg",
   },
   {
     quote:
       "The automation flows paid for themselves immediately. The team uses it daily now.",
     name: "Jordan M.",
     role: "Head of Marketing, Helio",
+    avatar: "/images/avatar-jordan.jpg",
   },
   {
     quote:
       "Beautiful templates, useful insights, and no engineering bottlenecks. Exactly what we needed.",
     name: "Alex R.",
     role: "Founder, Packetly",
+    avatar: "/images/avatar-alex.jpg",
   },
 ]
 
@@ -99,24 +103,46 @@ export default function Home() {
 
         <section className="relative overflow-hidden rounded-3xl border bg-gradient-to-b from-muted/40 to-background px-6 py-16 md:px-12">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,oklch(0.95_0.06_260/.45),transparent_45%)]" />
-          <Badge variant="secondary" className="mb-5">
-            New: Lifecycle campaign copilot
-          </Badge>
-          <h1 className="max-w-3xl text-4xl leading-tight font-semibold tracking-tight md:text-6xl">
-            Launch high-converting campaigns in hours, not weeks
-          </h1>
-          <p className="mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
-            PulsePilot helps modern teams create landing pages, automate follow-ups,
-            and optimize conversions using one collaborative marketing workspace.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#start" className={buttonPrimary}>
-              Start free trial
-              <ArrowRight className="size-4" />
-            </a>
-            <a href="#features" className={buttonOutline}>
-              Explore features
-            </a>
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <Badge variant="secondary" className="mb-5">
+                New: Lifecycle campaign copilot
+              </Badge>
+              <h1 className="max-w-3xl text-4xl leading-tight font-semibold tracking-tight md:text-6xl">
+                Launch high-converting campaigns in hours, not weeks
+              </h1>
+              <p className="mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
+                PulsePilot helps modern teams create landing pages, automate
+                follow-ups, and optimize conversions using one collaborative
+                marketing workspace.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a href="#start" className={buttonPrimary}>
+                  Start free trial
+                  <ArrowRight className="size-4" />
+                </a>
+                <a href="#features" className={buttonOutline}>
+                  Explore features
+                </a>
+              </div>
+            </div>
+
+            <div className="relative">
+              <Image
+                src="/images/hero-dashboard.jpg"
+                alt="Marketing analytics dashboard"
+                width={1800}
+                height={1200}
+                className="h-full rounded-2xl border object-cover shadow-2xl"
+                priority
+              />
+              <Card className="absolute right-4 bottom-4 w-52 border bg-background/90 backdrop-blur">
+                <CardHeader className="gap-2">
+                  <CardDescription>Campaign lift this week</CardDescription>
+                  <CardTitle className="text-2xl">+24.8%</CardTitle>
+                </CardHeader>
+              </Card>
+            </div>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -157,6 +183,27 @@ export default function Home() {
         </section>
 
         <section className="pt-20">
+          <div className="mb-8 grid gap-6 overflow-hidden rounded-2xl border bg-card/40 p-4 md:grid-cols-2 md:p-6">
+            <div className="order-2 flex flex-col justify-center md:order-1">
+              <Badge variant="outline" className="mb-3 w-fit">
+                Team collaboration
+              </Badge>
+              <h3 className="text-2xl font-semibold tracking-tight">
+                Keep everyone aligned from campaign brief to launch
+              </h3>
+              <p className="mt-3 text-muted-foreground">
+                Share assets, review copy, and monitor KPIs in one shared workspace
+                so product, design, and marketing move together.
+              </p>
+            </div>
+            <Image
+              src="/images/team-work.jpg"
+              alt="Marketing team collaborating around a laptop"
+              width={1400}
+              height={900}
+              className="order-1 h-64 rounded-xl border object-cover md:order-2 md:h-full"
+            />
+          </div>
           <div className="mb-8">
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
               Trusted by product-led teams
@@ -168,9 +215,18 @@ export default function Home() {
                 <CardContent className="pt-1 text-base leading-relaxed">
                   “{testimonial.quote}”
                 </CardContent>
-                <CardFooter className="flex-col items-start gap-0.5">
-                  <p className="font-medium">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                <CardFooter className="gap-3">
+                  <Image
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    width={64}
+                    height={64}
+                    className="size-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
                 </CardFooter>
               </Card>
             ))}

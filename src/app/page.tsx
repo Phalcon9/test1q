@@ -1,7 +1,6 @@
 import { ArrowRight, ChartLine, Clock3, ShieldCheck, Sparkles, Zap } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
-import { buttonVariants } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -11,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
 
 const features = [
   {
@@ -79,16 +77,22 @@ const testimonials = [
   },
 ]
 
+const buttonBase =
+  "inline-flex h-9 items-center justify-center gap-1.5 rounded-lg px-2.5 text-sm font-medium transition-all outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50"
+const buttonPrimary =
+  `${buttonBase} bg-primary text-primary-foreground hover:bg-primary/90`
+const buttonOutline =
+  `${buttonBase} border border-border bg-background hover:bg-muted`
+const buttonSecondary =
+  `${buttonBase} bg-secondary text-secondary-foreground hover:bg-secondary/80`
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <main className="mx-auto max-w-6xl px-6 pb-20 lg:px-8">
         <header className="flex items-center justify-between py-6">
           <p className="text-lg font-semibold tracking-tight">PulsePilot</p>
-          <a
-            href="#pricing"
-            className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-          >
+          <a href="#pricing" className={buttonOutline}>
             View pricing
           </a>
         </header>
@@ -106,14 +110,11 @@ export default function Home() {
             and optimize conversions using one collaborative marketing workspace.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#start" className={cn(buttonVariants({ size: "lg" }))}>
+            <a href="#start" className={buttonPrimary}>
               Start free trial
               <ArrowRight className="size-4" />
             </a>
-            <a
-              href="#features"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-            >
+            <a href="#features" className={buttonOutline}>
               Explore features
             </a>
           </div>
@@ -197,7 +198,7 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardFooter>
-                <a href="#start" className={cn(buttonVariants({ className: "w-full" }))}>
+                <a href="#start" className={`${buttonPrimary} w-full`}>
                   Get started
                 </a>
               </CardFooter>
@@ -211,10 +212,7 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardFooter>
-                <a
-                  href="#start"
-                  className={cn(buttonVariants({ variant: "secondary", className: "w-full" }))}
-                >
+                <a href="#start" className={`${buttonSecondary} w-full`}>
                   Start 14-day trial
                 </a>
               </CardFooter>
@@ -241,9 +239,7 @@ export default function Home() {
                 />
                 <button
                   type="button"
-                  className={cn(
-                    buttonVariants({ size: "lg", className: "justify-center sm:min-w-44" })
-                  )}
+                  className={`${buttonPrimary} justify-center sm:min-w-44`}
                 >
                   Request demo
                 </button>
